@@ -461,7 +461,7 @@ class MisReportInstancePeriod(models.Model):
                     )
 
     def copy_data(self, default=None):
-        if self.source == SRC_CMPCOL:
+        if self.filtered(lambda x: x.source == SRC_CMPCOL):
             # While duplicating a MIS report instance, comparison columns are
             # ignored because they would raise an error, as they keep the old
             # `source_cmpcol_from_id` and `source_cmpcol_to_id` from the
